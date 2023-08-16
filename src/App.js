@@ -13,11 +13,14 @@ const App = () => {
 	} = theme.useToken();
 
 	// 当前路径
-	const [ path, setPath ] = useState('/');
+	const [path, setPath] = useState('/');
 
 	return (
 		<Layout className='container'>
-			<Sider>
+			<Sider
+				breakpoint='lg'
+				collapsedWidth='0'
+			>
 				<div className="sider-title">分类栏目</div>
 				<Menu
 					theme="dark"
@@ -25,11 +28,11 @@ const App = () => {
 					selectedKeys={[path]}
 					items={
 						[
-							[ UserOutlined, '常用', '/' ],
-							[ UserOutlined, 'Code', '/code' ],
-							[ UserOutlined, 'Note', '/note' ],
+							[UserOutlined, '常用', '/'],
+							[UserOutlined, 'Code', '/code'],
+							[UserOutlined, 'Note', '/note'],
 						].map(
-							( [ icon, text, path ] ) => ({
+							([icon, text, path]) => ({
 								key: path,
 								icon: React.createElement(icon),
 								label: text,
@@ -58,15 +61,15 @@ const App = () => {
 						style={{
 							padding: 24,
 							height: '70vh',
-								background: colorBgContainer,
+							background: colorBgContainer,
 							position: 'relative'
 						}}
 					>
 						<Routes>
 							<Route
 								path="/"
-								element={ <Common path={path} /> }
-							/>		
+								element={<Common path={path} />}
+							/>
 						</Routes>
 					</div>
 				</Content>

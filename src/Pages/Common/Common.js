@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { findUrls, sort } from "../../utils";
 
 const Common = ({ path }) => {
-    
+
     // 网址数组
     const [urls, setUrls] = useState([]);
     useEffect(() => {
         setUrls(
             // a, b ['github','https://github.com', 'description']
-            findUrls(path).sort( ( a, b ) => sort( a[0], b[0] ) )
+            findUrls(path).sort((a, b) => sort(a[0], b[0]))
         );
     }, [path]);
 
@@ -23,7 +23,7 @@ const Common = ({ path }) => {
             }}
         >
             <InfiniteScroll
-                dataLength={ urls.length }
+                dataLength={urls.length}
             >
                 <List
                     className="list"
@@ -39,9 +39,10 @@ const Common = ({ path }) => {
                         xxl: 3,
                     }}
                     style={{
-                        overflowX: 'hidden'
+                        overflowX: 'hidden',
+                        padding: 10,
                     }}
-                    renderItem={ ( [ label, url, description ] ) => (
+                    renderItem={([label, url, description]) => (
                         <List.Item>
                             <Card
                                 hoverable
